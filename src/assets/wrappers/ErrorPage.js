@@ -5,12 +5,11 @@ const Wrapper = styled.main`
   img {
     width: 90vw;
     max-width: 600px;
-    display: block;
     margin-bottom: 2rem;
+    display: block;
   }
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   h3 {
     margin-bottom: 0.5rem;
   }

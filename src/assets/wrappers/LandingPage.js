@@ -4,15 +4,15 @@ const Wrapper = styled.main`
   nav {
     width: var(--fluid-width);
     max-width: var(--max-width);
-    margin: 0 auto;
     height: var(--nav-height);
+    margin: 0 auto;
     display: flex;
     align-items: center;
   }
   .page {
-    min-height: calc(100vh - var(--nav-height));
     display: grid;
     align-items: center;
+    min-height: calc(100vh - var(--nav-height));
     margin-top: -3rem;
   }
   h1 {
@@ -36,5 +36,6 @@ const Wrapper = styled.main`
       display: block;
     }
   }
-`
+`;
 export default Wrapper
+
