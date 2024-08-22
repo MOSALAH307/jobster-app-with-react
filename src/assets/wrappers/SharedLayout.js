@@ -18,5 +18,5 @@ const Wrapper = styled.section`
       width: 90%;
     }
   }
-`
+`;
 export default Wrapper

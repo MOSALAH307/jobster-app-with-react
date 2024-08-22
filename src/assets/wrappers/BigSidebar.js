@@ -13,12 +13,12 @@ const Wrapper = styled.aside`
       margin-left: -250px;
       transition: var(--transition);
     }
+    .show-sidebar {
+      margin-left: 0;
+    }
     .content {
       position: sticky;
       top: 0;
-    }
-    .show-sidebar {
-      margin-left: 0;
     }
     header {
       height: 6rem;
@@ -34,9 +34,9 @@ const Wrapper = styled.aside`
     .nav-link {
       display: flex;
       align-items: center;
-      color: var(--grey-500);
       padding: 1rem 0;
       padding-left: 2.5rem;
+      color: var(--grey-500);
       text-transform: capitalize;
       transition: var(--transition);
     }
@@ -53,7 +53,6 @@ const Wrapper = styled.aside`
       margin-right: 1rem;
       display: grid;
       place-items: center;
-      transition: var(--transition);
     }
     .active {
       color: var(--grey-900);
@@ -62,5 +61,5 @@ const Wrapper = styled.aside`
       color: var(--primary-500);
     }
   }
-`
+`;
 export default Wrapper

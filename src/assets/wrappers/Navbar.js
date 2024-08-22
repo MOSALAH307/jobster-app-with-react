@@ -80,5 +80,5 @@ const Wrapper = styled.nav`
       display: block;
     }
   }
-`
+`;
 export default Wrapper

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const PasswordInput = ({ label, register, isInvalid, errors }) => {
+export const PasswordInput = ({ label, register, isInvalid, errors, name }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassVisibilty = () => {
@@ -8,22 +8,24 @@ export const PasswordInput = ({ label, register, isInvalid, errors }) => {
   };
   return (
     <div className="form-row">
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={name} className="form-label">
+        {label}
+      </label>
       <div className="password-wrapper">
         <input
-          id={label}
-          {...register(`${label}`)}
+          id={name}
+          {...register(`${name}`)}
           type={showPassword ? "text" : "password"}
           className={`form-input ${isInvalid ? "invalid" : ""}`}
         />
-        {label === "password" && (
+        {name === "password" && (
           <span className="password-toggle-icon" onClick={togglePassVisibilty}>
             {showPassword ? "🙈" : "👁️"}
           </span>
         )}
       </div>
-      {errors[label] && (
-        <span className="invalid-feedback">{errors[label]?.message}</span>
+      {errors[name] && (
+        <span className="invalid-feedback">{errors[name]?.message}</span>
       )}
     </div>
   );

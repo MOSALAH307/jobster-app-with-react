@@ -22,7 +22,7 @@ const Wrapper = styled.section`
   }
   .form-center {
     display: grid;
-    row-gap: 0.5rem;
+    row-gap: 1.5rem;
   }
   .form-center button {
     align-self: end;

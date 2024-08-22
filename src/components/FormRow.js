@@ -1,15 +1,17 @@
-export const FormRow = ({ label, register, isInvalid, errors, type }) => {
+export const FormRow = ({ label, register, isInvalid, errors, type, name }) => {
   return (
     <div className="form-row">
-      <label htmlFor={label}>{label}</label>
+      <label htmlFor={name} className="form-label">
+        {label}
+      </label>
       <input
-        id={label}
-        {...register(`${label}`)}
+        id={name}
+        {...register(`${name}`)}
         type={type}
         className={`form-input ${isInvalid ? "invalid" : ""}`}
       />
-      {errors[label] && (
-        <span className="invalid-feedback">{errors[label]?.message}</span>
+      {errors[name] && (
+        <span className="invalid-feedback">{errors[name]?.message}</span>
       )}
     </div>
   );
