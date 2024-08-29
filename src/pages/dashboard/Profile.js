@@ -53,36 +53,40 @@ export const Profile = () => {
         <h3>profile</h3>
         <div className="form-center">
           <FormRow
-            label="name *"
+            label="name"
             name="name"
             type="text"
             register={register}
             errors={errors}
             isInvalid={errors.name}
+            required={true}
           />
           <FormRow
-            label="last name *"
+            label="last name"
             name="lastName"
             type="text"
             register={register}
             errors={errors}
             isInvalid={errors.lastName}
+            required={true}
           />
           <FormRow
-            label="email *"
+            label="email"
             name="email"
             type="text"
             register={register}
             errors={errors}
             isInvalid={errors.email}
+            required={true}
           />
           <FormRow
-            label="location *"
+            label="location"
             name="location"
             type="text"
             register={register}
             errors={errors}
             isInvalid={errors.location}
+            required={true}
           />
           <button className="btn btn-block" type="submit" disabled={isLoading}>
             {isLoading ? "Please Wait..." : "save changes"}
@@ -92,49 +96,3 @@ export const Profile = () => {
     </Wrapper>
   );
 };
-
-// const Wrapper = styled.section`
-//   background: var(--white);
-//   border-radius: var(--borderRadius);
-//   width: 100%;
-//   padding: 3rem 2rem 4rem;
-//   box-shadow: var(--shadow-2);
-//   h3 {
-//     margin-top: 0;
-//   }
-//   .form {
-//     box-shadow: none;
-//     max-width: 100%;
-//     width: 100%;
-//     margin: 0;
-//     padding: 0;
-//     border-radius: 0;
-//   }
-//   .form-row {
-//     margin-bottom: 0;
-//   }
-//   .form-center {
-//     display: grid;
-//     row-gap: 0.5rem;
-//   }
-//   .form-center button {
-//     align-self: end;
-//     margin-top: 1rem;
-//     height: 35px;
-//   }
-//    @media (min-width: 992px) {
-//     .form-center {
-//       grid-template-columns: 1fr 1fr;
-//       align-items: center;
-//       column-gap: 1rem;
-//     }
-//   }
-//   @media (min-width: 1120px) {
-//     .form-center {
-//       grid-template-columns: 1fr 1fr 1fr;
-//     }
-//     .form-center button {
-//       margin-top: 0;
-//     }
-//   }
-// `;

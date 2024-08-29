@@ -1,8 +1,8 @@
-export const FormRow = ({ label, register, isInvalid, errors, type, name }) => {
+export const FormRow = ({ label, register, isInvalid, errors, type, name, required }) => {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
-        {label}
+        {label} {required ? <span style={{color: "red"}}> *</span> : ""}
       </label>
       <input
         id={name}

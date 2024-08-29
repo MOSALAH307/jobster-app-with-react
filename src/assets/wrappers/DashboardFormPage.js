@@ -1,42 +1,49 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
+  background: var(--white);
   border-radius: var(--borderRadius);
   width: 100%;
-  background: var(--white);
   padding: 3rem 2rem 4rem;
   box-shadow: var(--shadow-2);
   h3 {
     margin-top: 0;
   }
   .form {
-    margin: 0;
-    border-radius: 0;
     box-shadow: none;
-    padding: 0;
     max-width: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
   }
   .form-row {
-    margin-bottom: 0;
+    margin-bottom: 1.85rem;
+    /* border: 2px solid red; */
   }
   .form-center {
     display: grid;
-    row-gap: 1.5rem;
+    row-gap: 0.5rem;
   }
   .form-center button {
-    align-self: end;
-    height: 35px;
-    margin-top: 1rem;
+    align-self: center;
+    /* margin-top: 0; */
+    /* height: 35px; */
+    /* border: 2px solid red; */
+    translate: 0 -1.5px;
+    /* padding-bottom: 0.5rem; */
   }
   .btn-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1rem;
-    align-self: flex-end;
-    margin-top: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    translate: 0 -1px;
+    /* margin-top: 0.5rem; */
+    align-self: center;
+    /* border: 2px solid red; */
+    /* padding-bottom: 0.25rem; */
     button {
       height: 35px;
+      /* border: 2px solid red; */
     }
   }
   .clear-btn {
@@ -63,6 +70,6 @@ const Wrapper = styled.section`
       margin-top: 0;
     }
   }
-`
+`;
 
 export default Wrapper

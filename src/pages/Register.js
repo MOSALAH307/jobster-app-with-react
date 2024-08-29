@@ -68,25 +68,26 @@ export const Register = () => {
         {!isMember && (
           <FormRow
             type="text"
-            label="name *"
+            label="name"
             name="name"
             register={register}
             errors={errors}
             isInvalid={errors.name}
+            required={true}
           />
         )}
         {/* Email */}
         <FormRow
           type="text"
-          label="email *"
+          label="email"
           name="email"
           register={register}
           errors={errors}
           isInvalid={errors.email}
+          required={true}
         />
         {/* Password */}
         <PasswordInput
-          label="password *"
           name="password"
           register={register}
           errors={errors}

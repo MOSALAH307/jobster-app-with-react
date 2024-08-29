@@ -5,8 +5,9 @@ import { SmallSidebar } from "./SmallSidebar.js";
 import { BigSidebar } from "./BigSidebar.js";
 import ProtectedRoute from "./ProtectedRoute.js";
 import NavLinks from "./NavLinks.js";
-
-
+import FormRowSelect from "./FormRowSelect.js";
+import JobsContainer from "./JobsContainer.js";
+import JobSearchContainer from "./JobSearchContainer.js";
 export {
   Logo,
   FormRow,
@@ -15,4 +16,7 @@ export {
   BigSidebar,
   ProtectedRoute,
   NavLinks,
+  FormRowSelect,
+  JobsContainer,
+  JobSearchContainer,
 };

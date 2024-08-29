@@ -9,7 +9,7 @@ export const PasswordInput = ({ label, register, isInvalid, errors, name }) => {
   return (
     <div className="form-row">
       <label htmlFor={name} className="form-label">
-        {label}
+        password <span style={{ color: "red" }}> *</span>
       </label>
       <div className="password-wrapper">
         <input
