@@ -43,8 +43,18 @@ const JobSearchContainer = () => {
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm();
+
+  const handleClear = () => {
+    reset({
+      search: "",
+      status: "all",
+      type: "all",
+      sort: "latest",
+    });
+  };
 
   const onSubmit = (data) => {
     console.log(data);
@@ -53,41 +63,47 @@ const JobSearchContainer = () => {
     <Wrapper>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h3>search form</h3>
-        {/* search position */}
-        <FormRow
-          label="search"
-          name="search"
-          register={register}
-          type="text"
-          errors={errors}
-        />
-        {/* search by status */}
-        <FormRowSelect
-          label="status"
-          name="status"
-          register={register}
-          errors={errors}
-          list={status}
-        />
-        {/* search by type*/}
-        <FormRowSelect
-          label="type"
-          name="type"
-          register={register}
-          errors={errors}
-          list={types}
-        />
-        {/* sort */}
-        <FormRowSelect
-          label="sort"
-          name="sort"
-          register={register}
-          errors={errors}
-          list={sort}
-        />
-        <button className="btn btn-block btn-danger" type="button">
-          clear filters
-        </button>
+        <div className="form-center">
+          {/* search position */}
+          <FormRow
+            label="search"
+            name="search"
+            register={register}
+            type="text"
+            errors={errors}
+          />
+          {/* search by status */}
+          <FormRowSelect
+            label="status"
+            name="status"
+            register={register}
+            errors={errors}
+            list={status}
+          />
+          {/* search by type*/}
+          <FormRowSelect
+            label="type"
+            name="type"
+            register={register}
+            errors={errors}
+            list={types}
+          />
+          {/* sort */}
+          <FormRowSelect
+            label="sort"
+            name="sort"
+            register={register}
+            errors={errors}
+            list={sort}
+          />
+          <button
+            className="btn btn-block btn-danger"
+            type="button"
+            onClick={handleClear}
+          >
+            clear filters
+          </button>
+        </div>
       </form>
     </Wrapper>
   );

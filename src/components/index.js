@@ -8,6 +8,9 @@ import NavLinks from "./NavLinks.js";
 import FormRowSelect from "./FormRowSelect.js";
 import JobsContainer from "./JobsContainer.js";
 import JobSearchContainer from "./JobSearchContainer.js";
+import Job from "./Job.js";
+import Loading from "./Loading.js";
+
 export {
   Logo,
   FormRow,
@@ -19,4 +22,6 @@ export {
   FormRowSelect,
   JobsContainer,
   JobSearchContainer,
+  Job,
+  Loading,
 };

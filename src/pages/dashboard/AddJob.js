@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import Wrapper from "../../assets/wrappers/DashboardFormPage.js";
-import { addJob, clearValues } from "../../features/job/jobSlice.js";
+import { addJob } from "../../features/job/jobSlice.js";
 import { useEffect } from "react";
 
 export const statusList = [
@@ -76,8 +76,8 @@ export const AddJob = () => {
       position: "",
       company: "",
       jobLocation: "",
-      status: "",
-      jobType: "",
+      status: "interview",
+      jobType: "full-time",
     });
   };
 
