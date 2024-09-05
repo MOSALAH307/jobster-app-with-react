@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import Wrapper from "../../assets/wrappers/DashboardFormPage.js";
-import { addJob } from "../../features/job/jobSlice.js";
+import { addJob, clearEditing, editJob } from "../../features/job/jobSlice.js";
 import { useEffect } from "react";
 
 export const statusList = [
@@ -40,7 +40,7 @@ export const typesList = [
   },
 ];
 export const AddJob = () => {
-  const { isLoading } = useSelector((store) => store.job);
+  const { isLoading, isEditing, job } = useSelector((store) => store.job);
   const { user } = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
@@ -59,30 +59,42 @@ export const AddJob = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  useEffect(() => {
-    if (user) {
-      reset({
-        // position: job.position || "",
-        // company: job.company || "",
-        jobLocation: user.location || "",
-        // status: job.status,
-        // jobType: job.jobType
-      });
+  const initializeForm = () => {
+    if (isEditing && job) {
+      return {
+        position: job.position || "",
+        company: job.company || "",
+        jobLocation: job.jobLocation || "",
+        status: job.status || "",
+        jobType: job.jobType || "",
+      };
+    } else if (user && !isEditing) {
+      return { jobLocation: user.location || "" };
+    } else {
+      return {
+        position: "",
+        company: "",
+        jobLocation: "",
+        status: "interview",
+        jobType: "full-time",
+      };
     }
-  }, [user, reset]);
+  };
+
+  useEffect(() => {
+    reset(initializeForm());
+  }, [isEditing, job, user, reset]);
 
   const handleClear = () => {
-    reset({
-      position: "",
-      company: "",
-      jobLocation: "",
-      status: "interview",
-      jobType: "full-time",
-    });
+    dispatch(clearEditing());
+    reset(initializeForm());
   };
 
   const onSubmit = (data) => {
-    dispatch(addJob(data));
+    isEditing
+      ? dispatch(editJob({ jobId: job.jobId, job: data }))
+      : dispatch(addJob(data));
+    handleClear();
   };
 
   return (

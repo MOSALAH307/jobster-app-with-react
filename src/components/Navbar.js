@@ -3,7 +3,7 @@ import { Logo } from "./Logo.js";
 import { useDispatch, useSelector } from "react-redux";
 import Wrapper from "../assets/wrappers/Navbar.js";
 import { useState } from "react";
-import { logoutUser, toggleSidebar } from "../features/user/userSlice.js";
+import { clearStore, toggleSidebar } from "../features/user/userSlice.js";
 
 export const Navbar = () => {
   const { user } = useSelector((store) => store.user);
@@ -20,7 +20,7 @@ export const Navbar = () => {
   };
 
   const logout = () => {
-    dispatch(logoutUser());
+    dispatch(clearStore());
   };
   return (
     <Wrapper>

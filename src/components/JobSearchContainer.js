@@ -1,24 +1,12 @@
-import { useForm } from "react-hook-form";
-import Wrapper from "../assets/wrappers/DashboardFormPage.js";
+import { useForm, useWatch } from "react-hook-form";
 import FormRowSelect from "./FormRowSelect.js";
 import { FormRow } from "./FormRow.js";
 import { statusList, typesList } from "../pages/dashboard/AddJob.js";
-
-const types = [
-  {
-    id: 5,
-    name: "all",
-  },
-  ...typesList,
-];
-
-const status = [
-  {
-    id: 5,
-    name: "all",
-  },
-  ...statusList,
-];
+import Wrapper from "../assets/wrappers/SearchContainer.js";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSearchValues } from "../features/allJobs/allJobsSlice.js";
+import { debounce } from "lodash";
 
 const sort = [
   {
@@ -40,28 +28,53 @@ const sort = [
 ];
 
 const JobSearchContainer = () => {
+  const dispatch = useDispatch();
   const {
-    handleSubmit,
     register,
     reset,
+    control,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      search: "",
+      searchStatus: "all",
+      searchType: "all",
+      sort: "latest",
+    },
+  });
+
+  const formValues = useWatch({ control });
+
+  const debounceSearch = debounce((formData) => {
+    dispatch(setSearchValues(formData)); // Update search values and reset page to 1
+  }, 500);
+
+  useEffect(() => {
+    debounceSearch(formValues);
+    return () => debounceSearch.cancel();
+  }, [formValues, dispatch]);
 
   const handleClear = () => {
     reset({
       search: "",
-      status: "all",
-      type: "all",
+      searchStatus: "all",
+      searchType: "all",
       sort: "latest",
     });
+    dispatch(
+      setSearchValues({
+        search: "",
+        searchStatus: "all",
+        searchType: "all",
+        sort: "latest",
+      })
+    );
+    // dispatch(getAllJobs(formValues));
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   return (
     <Wrapper>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="form">
         <h3>search form</h3>
         <div className="form-center">
           {/* search position */}
@@ -75,18 +88,30 @@ const JobSearchContainer = () => {
           {/* search by status */}
           <FormRowSelect
             label="status"
-            name="status"
+            name="searchStatus"
             register={register}
             errors={errors}
-            list={status}
+            list={[
+              {
+                id: 5,
+                name: "all",
+              },
+              ...statusList,
+            ]}
           />
           {/* search by type*/}
           <FormRowSelect
             label="type"
-            name="type"
+            name="searchType"
             register={register}
             errors={errors}
-            list={types}
+            list={[
+              {
+                id: 5,
+                name: "all",
+              },
+              ...typesList,
+            ]}
           />
           {/* sort */}
           <FormRowSelect

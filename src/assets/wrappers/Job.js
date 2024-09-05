@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.article`
   background: var(--white);
@@ -6,7 +6,6 @@ const Wrapper = styled.article`
   display: grid;
   grid-template-rows: 1fr auto;
   box-shadow: var(--shadow-2);
-
   header {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--grey-100);
@@ -20,13 +19,13 @@ const Wrapper = styled.article`
   .main-icon {
     width: 60px;
     height: 60px;
+    background: var(--primary-500);
     display: grid;
     place-items: center;
-    background: var(--primary-500);
     border-radius: var(--borderRadius);
+    text-transform: uppercase;
     font-size: 1.5rem;
     font-weight: 700;
-    text-transform: uppercase;
     color: var(--white);
     margin-right: 2rem;
   }
@@ -70,12 +69,12 @@ const Wrapper = styled.article`
       grid-template-columns: 1fr 1fr;
     }
   }
-
   .status {
+    display: grid;
+    place-items: center;
     border-radius: var(--borderRadius);
-    text-transform: capitalize;
     letter-spacing: var(--letterSpacing);
-    text-align: center;
+    text-transform: capitalize;
     width: 100px;
     height: 30px;
     margin-top: 0.5rem;
@@ -98,9 +97,9 @@ const Wrapper = styled.article`
     color: var(--red-dark);
     background: var(--red-light);
   }
-  &:hover .actions {
+  /* &:hover .actions {
     visibility: visible;
-  }
+  } */
 `;
 
 export default Wrapper;
