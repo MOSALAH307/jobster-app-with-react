@@ -69,7 +69,13 @@ export const AddJob = () => {
         jobType: job.jobType || "",
       };
     } else if (user && !isEditing) {
-      return { jobLocation: user.location || "" };
+      return {
+        position: "",
+        company: "",
+        jobLocation: user.location || "",
+        status: "interview",
+        jobType: "full-time",
+      };
     } else {
       return {
         position: "",
